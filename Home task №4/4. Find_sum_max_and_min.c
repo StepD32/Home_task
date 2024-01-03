@@ -23,6 +23,7 @@ int32_t max_number = 0, min_number =0;
 	min_number = min_number > e ? e: min_number;
     printf("Min numbers: %" PRId32 "\n" , min_number);
 	printf("Sum max and min: %" PRId32 "\n" , max_number+min_number);
+	
 
 	return 0;
 }
