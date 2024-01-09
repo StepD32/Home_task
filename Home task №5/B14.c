@@ -1,19 +1,28 @@
+/*
+Посчитать числа
+Дана последовательность ненулевых целых чисел, в конце последовательности число 0. 
+Подсчитать количество чисел. 
+
+Данные на входе:		Целые ненулевые числа. В конце последовательности ноль. Ноль в последовательность не входит. 
+Данные на выходе:	Одно целое число - количество чисел в последовательности. 
+
+Пример №1
+Данные на входе:	15 22 2 4 1 6 0 
+Данные на выходе:	6  
+*/
+
+
 #include <stdio.h>
  
 int main(void)
 {
-unsigned int a,even=0,not_even=0;
-    printf("Enter number: ");
-    scanf("%d", &a); 
-    int num;
-    while (a != 0)
-    { 
-		num = a%10;
-		if (num%2 == 0) even++;
-		if (num%2 != 0) not_even++;
-		a /=10;
-						
-    }
-    printf("even = %d, not_even = %d\n  ",even,not_even);  
+unsigned int a,count=0;;
+	printf("Enter number:\n ");
+    do
+    {
+		scanf("%d", &a); 
+		count++;						
+    }while(a !=0);
+	printf("the number of numbers in a sequence %d",count-1);
     return 0;
 }
