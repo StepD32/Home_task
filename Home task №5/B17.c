@@ -37,13 +37,13 @@ unsigned int a,sum=0,mul=1;
 		int count_i=i;	
 		while(count_i != 0)
 		{
-			sum += count_i%10;		
-			mul *= count_i%10;			
-			count_i /=10;		
+			sum+=count_i%10;
+			mul*=count_i%10;
+			count_i/=10;
 		}
 		if (sum == mul)printf("%d ",i);
-		sum = 0;
-		mul = 1;
+		sum=0;
+		mul=1;
 	}
-    return 0;
+	return 0;
 }

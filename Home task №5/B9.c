@@ -17,19 +17,19 @@
 
 int main(int argc, char **argv)
 {
-	int a,num;
+	int a;
 	printf("Enter number: ");
-    scanf("%d", &a);    
+	scanf("%d", &a);
 	while(a>0)
 	{	
-		num = a%10;
+		int num=a%10;
 		if(num%2!=0)
 		{
 			printf("NO");
 			return 0;
 		}
-		a=a/10;
+		a/=10;
 	}
 	printf("YES");
-    return 0;	
+    return 0;
 }

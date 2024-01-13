@@ -16,13 +16,13 @@
  
 int main(void)
 {
-unsigned int a,count=0;;
+unsigned int a,count=0;
 	printf("Enter number:\n ");
-    do
-    {
+	do
+	{
 		scanf("%d", &a); 
-		count++;						
-    }while(a !=0);
+		count++;
+	}while(a !=0);
 	printf("the number of numbers in a sequence %d",count-1);
-    return 0;
+	return 0;
 }

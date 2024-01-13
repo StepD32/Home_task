@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 {
 	int a,other_nums,num;
 	printf("Enter number: ");
-    scanf("%d", &a);
+	scanf("%d", &a);
 	if (a < 10){
 		printf("NO ");
 		return 0;
@@ -34,7 +34,7 @@ int main(int argc, char **argv)
 			 return 0;	
 		}
 		other_nums = num;
-		a = a/10;	
+		a /= 10;	
 	}	
 	printf("NO");
 }
