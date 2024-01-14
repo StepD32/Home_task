@@ -24,11 +24,11 @@
 
 #include <stdio.h>
 
-unsigned int sum_number(unsigned  int n)
+unsigned long long sum_number(unsigned int n)
 {
-unsigned int res=1;
+unsigned long long res=1;
 	for(int i=2; i<=n; i++)
-	res *= 2 ;
+		res *= 2 ;
 	return res;
 }
 
@@ -37,8 +37,8 @@ int main(void)
 unsigned int number;
 	printf("Enter number:\n ");
 	scanf("%d", &number);
-	unsigned int sum = sum_number(number);
-	printf("The number of grains: %d\n",sum);
+	unsigned long long sum = sum_number(number);
+	printf("The number of grains: %lld\n",sum);
 	return 0;
 }
 
