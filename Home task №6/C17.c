@@ -24,26 +24,26 @@ int is_happy_number(int n)
 int is_happy_number(unsigned int a)
 {
 unsigned int sum = 0, mul = 1;
-    for(int i=0; a!=0;i++)
-    {   
+	for(int i=0; a!=0;i++)
+	{
 		unsigned int temp_dev = a%10;
-        sum +=temp_dev;
-        mul *=temp_dev;              
-        a/=10;         
-       
-    }
+		sum +=temp_dev;
+		mul *=temp_dev;
+		a/=10;
+		
+	}
     return sum == mul ? 0 : 1;
 }
 
 int main(void)
 {
 unsigned int a;
-    printf("Enter number: ");
-    scanf("%d",&a);
-    if (a>0)
-    {
-        printf("The sum of the digits is equal to the product: ");
-        is_happy_number(a)!=0 ? printf("NO\n"):printf("YES\n");
-    }
-    return 0;
+	printf("Enter number: ");
+	scanf("%d",&a);
+	if (a>0)
+	{
+		printf("The sum of the digits is equal to the product: ");
+		is_happy_number(a)!=0 ? printf("NO\n"):printf("YES\n");
+	}
+	return 0;
 }

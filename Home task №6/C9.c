@@ -21,7 +21,7 @@ unsigned long long res=1;
 	return res;
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
 unsigned long long number;
 	printf("Enter number:\n ");

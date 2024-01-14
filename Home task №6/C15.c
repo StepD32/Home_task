@@ -23,24 +23,24 @@ int grow_up(int n)
 int grow_up(unsigned int a)
 {
 unsigned int other_nums = a;
-    for(int i=0; a!=0;i++)
-    {   
-    int temp_dev = a%10;
-        if (temp_dev < other_nums)        
-            a/=10; 
-        else 
-            return -1;
-        other_nums = temp_dev;
-    }
-    return 0;
+	for(int i=0; a!=0;i++)
+	{
+	int temp_dev = a%10;
+		if (temp_dev < other_nums)
+			a/=10; 
+		else 
+			return -1;
+		other_nums = temp_dev;
+	}
+	return 0;
 }
 
 int main(void)
 {
 unsigned int a;
-    printf("Enter number:\n");
-    scanf("%d",&a);
-    printf("Numbers are in ascending order ");
-    grow_up(a)!=0 ? printf("NO\n"):printf("YES\n");
-    return 0;
+	printf("Enter number:\n");
+	scanf("%d",&a);
+	printf("Numbers are in ascending order ");
+	grow_up(a)!=0 ? printf("NO\n"):printf("YES\n");
+	return 0;
 }

@@ -32,7 +32,7 @@ unsigned int res=1;
 	return res;
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
 unsigned int number;
 	printf("Enter number:\n ");

@@ -21,7 +21,7 @@ unsigned int res=0;
 	
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
 unsigned int number;
 	printf("Enter number:\n ");

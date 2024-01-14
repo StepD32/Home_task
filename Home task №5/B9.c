@@ -31,5 +31,5 @@ int main(int argc, char **argv)
 		a/=10;
 	}
 	printf("YES");
-    return 0;
+	return 0;
 }

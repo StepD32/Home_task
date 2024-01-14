@@ -35,7 +35,7 @@ unsigned int div=2;
 	return 0;
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
 unsigned int a,b;
 	printf("Enter two number:\n ");

@@ -16,14 +16,14 @@ int middle(int a, int b)
 #include <stdio.h>
 
 
-unsigned int middle(unsigned  int a, unsigned  int b)
+unsigned int middle(unsigned int a, unsigned int b)
 {
 unsigned int res;
-	res = (a+b)/2; 
+	res = (a+b)/2;
 	return res;
 }
 
-int main(int argc, char **argv)
+int main(void)
 {
 unsigned int first_number, second_number, average=0;
 	printf("Enter two number:\n ");
