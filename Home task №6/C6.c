@@ -26,7 +26,7 @@
 
 unsigned int sum_number(unsigned  int n)
 {
-	unsigned int res=1;
+unsigned int res=1;
 	for(int i=2; i<=n; i++)
 	res *= 2 ;
 	return res;
@@ -34,7 +34,7 @@ unsigned int sum_number(unsigned  int n)
 
 int main(int argc, char **argv)
 {
-	unsigned int number;
+unsigned int number;
 	printf("Enter number:\n ");
 	scanf("%d", &number);
 	unsigned int sum = sum_number(number);

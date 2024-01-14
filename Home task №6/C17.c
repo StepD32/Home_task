@@ -26,7 +26,7 @@ int is_happy_number(unsigned int a)
 unsigned int sum = 0, mul = 1;
     for(int i=0; a!=0;i++)
     {   
-        unsigned int temp_dev = a%10;
+		unsigned int temp_dev = a%10;
         sum +=temp_dev;
         mul *=temp_dev;              
         a/=10;         

@@ -14,11 +14,11 @@ int nod(int a, int b)
 
 unsigned int nod(unsigned int a, unsigned int b)
 {
-	unsigned int div=2;
+unsigned int div=2;
 	while (1)
 	{
-		unsigned int tem_dev_a;
-		unsigned int tem_dev_b;
+	unsigned int tem_dev_a;
+	unsigned int tem_dev_b;
 		tem_dev_a = a%div;
 		tem_dev_b = b%div;
 		if (div > a && div > b)
@@ -37,7 +37,7 @@ unsigned int nod(unsigned int a, unsigned int b)
 
 int main(int argc, char **argv)
 {
-	unsigned int a,b;
+unsigned int a,b;
 	printf("Enter two number:\n ");
 	scanf("%d %d", &a, &b);
 	unsigned int temp_not = nod(a, b);

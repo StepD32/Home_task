@@ -15,7 +15,7 @@ int factorial(int n)
 
 unsigned long long factorial(unsigned int n)
 {
-	unsigned long long res=1;
+unsigned long long res=1;
 	for(int i=2; i<=n; i++)
 	res *= i;
 	return res;
@@ -23,7 +23,7 @@ unsigned long long factorial(unsigned int n)
 
 int main(int argc, char **argv)
 {
-	unsigned long long number;
+unsigned long long number;
 	printf("Enter number:\n ");
 	scanf("%lld", &number);
 	unsigned long long fac = factorial(number);
