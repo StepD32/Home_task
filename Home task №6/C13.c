@@ -37,13 +37,11 @@ float cosx(float x)
 
 	do
 	{
-		
 		sum += Xn;
 		Xn *=-1*(pow(x,i)/fact(i));
 		i += 2;
 	}
 	while (fabs(Xn) > 0.001);
-	printf("i=%d\n",i);
 	return sum;
 }
 
