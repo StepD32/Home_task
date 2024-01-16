@@ -24,7 +24,7 @@ unsigned long fact(int num)
 	unsigned long mul = 1;
 	for(int i=1; i<=num; i++)
 	{
-		mul *= i; 
+		mul *= i;
 	}
 	return mul;
 }
@@ -37,8 +37,8 @@ float cosx(float x)
 
 	do
 	{
-		sum += Xn;
 		Xn *=-1*(pow(x,i)/fact(i));
+		sum += Xn;
 		i += 2;
 	}
 	while (fabs(Xn) > 0.001);
