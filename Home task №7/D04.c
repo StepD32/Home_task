@@ -22,7 +22,6 @@ void print_num(int num)
 
 void print_num(unsigned int n)
 {
-	
 	if (n > 9)
 		print_num(n/10);
 	printf("%d ", n%10);
