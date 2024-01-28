@@ -29,7 +29,8 @@ void print_digits(int n)
 
 
 int main()
-{
+{	
+	int* arry_mas = new int[10000];
 	int input;
 	printf("Enter number:");
 	scanf("%d", &input);
