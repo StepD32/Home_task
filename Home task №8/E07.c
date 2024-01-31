@@ -61,7 +61,6 @@ void Inversion2( int arr[], int n)
 			arr[j] ^= arr[i];
 			arr[i] ^= arr[j];
 			arr[j] ^= arr[i];
-			
 		}
 	}
 
@@ -70,7 +69,6 @@ void Inversion2( int arr[], int n)
 			arr[j] += arr[i];
 			arr[i] = arr[j] - arr[i];
 			arr[j] -= arr[i];
-			
 		}
 	}
 }
