@@ -24,33 +24,65 @@ E7 Практик 2
 
 int Input (int arr[], int n) //описание функции ввода
 {
-int i;
+	int i;
 	for (i = 0; i < n; i++) //ввод массива
 		scanf ("%d", &arr[i]);
 	return i;
 }
 
-void PrintInversion( int arr[], int n)
-{	
-	int tempAra[n];
-	for (int i = (n/2)-1, j = 0; i >=0; i--,j++)
-	{	
-		tempAra[j] = arr[i];
-		printf("%d ",tempAra[j]);
-	}
-	for (int i = n-1, j = (n/2)-1 ; i >=5; i--,j++)
-	{	
-		tempAra[j] = arr[i];
-		printf("%d ",tempAra[j]);
+void PrintArray(int arr[], int n)
+{
+	for(int i = 0; i<n; i++){
+		printf("%d ",arr[i]);
 	}
 }
+
+void Inversion( int arr[], int n)
+{	
+	int tempAra[n];
+
+	for (int i = (n/2)-1, j = 0; i >=0; i--,j++){
+		tempAra[j] = arr[i];
+	}
+
+	for (int i = n-1, j = (n/2) ; i >=(n/2); i--,j++){
+		tempAra[j] = arr[i];
+	}
+	
+	for(int i = 0; i < n; i++){
+		arr[i]=tempAra[i];
+	}
+}
+
+void Inversion2( int arr[], int n)
+{	
+	for (int i = (n/2)-1, j = 0; i >=0; i--,j++){
+		if(i-j >0){
+			arr[j] ^= arr[i];
+			arr[i] ^= arr[j];
+			arr[j] ^= arr[i];
+			
+		}
+	}
+
+	for (int i = n-1, j = (n/2) ; i >=(n/2); i--,j++){
+		if(i-j >0){
+			arr[j] += arr[i];
+			arr[i] = arr[j] - arr[i];
+			arr[j] -= arr[i];
+			
+		}
+	}
+}
+
 
 int main()
 {	
 	int arr[ARR_SIZE];
 	printf("Enter number: ");
 	Input (arr, ARR_SIZE);
-	PrintInversion(arr, ARR_SIZE);
+	Inversion2(arr, ARR_SIZE);
+	PrintArray(arr, ARR_SIZE);
 	return 0;
 }
 
