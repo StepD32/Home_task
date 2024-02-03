@@ -29,16 +29,16 @@ int i;
 
 void PrintAverage( int arr[], int n)
 {
-	float ave = 0;
+	float ave = 0.0;
 	for (int i = 0; i < n; i++)
 		ave+=arr[i];
-	ave /= (float)n;
-	printf("%.3f\n",ave);
+
+	printf("%.3f\n",ave/n);
 }
 
 int main()
 {	
-	int arr[ARR_SIZE];
+	int arr[ARR_SIZE] = {0};
 	printf("Enter number: ");
 	Input (arr, ARR_SIZE);
 	PrintAverage(arr, ARR_SIZE);

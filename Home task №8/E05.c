@@ -31,7 +31,7 @@ int i;
 
 void PrintSumPositiv( int arr[], int n)
 {
-	int SumPos =0;
+	int SumPos = 0;
 	for (int i = 0; i < n; i++)
 	{	
 		if(arr[i] > 0)

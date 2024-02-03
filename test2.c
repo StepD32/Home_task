@@ -1,34 +1,59 @@
 /*
- * test2.c
- * 
- * Copyright 2024 Mitya <Mitya@SER5>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
 
+E9
+Циклический сдвиг массива вправо
+Считать массив из 10 элементов и выполнить циклический сдвиг ВПРАВО на 1. 
+
+Данные на входе: 	10 целых чисел через пробел 
+Данные на выходе: 	10 целых чисел через пробел сдвинутых вправо на 1 элемент циклически 
+
+Пример №1
+Данные на входе: 	4 -5 3 10 -4 -6 8 -10 1 0 
+Данные на выходе: 	0 4 -5 3 10 -4 -6 8 -10 1 
+
+Пример №2
+Данные на входе: 	1 2 3 4 5 6 7 8 9 10 
+Данные на выходе: 	10 1 2 3 4 5 6 7 8 9 
+
+*/
 
 #include <stdio.h>
 
-int main(int argc, char **argv)
+#define  ARR_SIZE 12
+ 
+void aPrint(int *arr, int len)
 {
-	char* str = "Hello World";
-	
-	printf("%s %llu", str, sizeof(str));
-	return 0;
+	for (int i = 0; i < len; i++)
+		printf("%d ",arr[i]);
 }
+
+
+
+void shiftArray(int arr[], int size, int shift)
+{
+	int temp[size];
+
+	for (int i = size-1 ; i >= 0 ; i--) {
+		if (i+shift >= size)
+			temp[i+shift-size]= arr[i];
+		else
+			temp[i+shift] = arr[i];
+	}
+
+	for (int i = 0; i < size; i++) {
+		arr[i] = temp[i];
+	}
+}
+
+ 
+int main()
+{
+
+int array[ARR_SIZE] = {0};
+	for(int i=0; i < ARR_SIZE; i++)
+		scanf("%d", &array[i]);
+	shiftArray(array,ARR_SIZE,4);
+	aPrint(array, ARR_SIZE);
+	return 0;
+} 
 
