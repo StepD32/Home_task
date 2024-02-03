@@ -16,7 +16,7 @@
 #include <stdio.h>
 
 #define  ARR_SIZE 10
-#define  ZERO 0
+
 
 
 int Input (int arr[], int n) //описание функции ввода
@@ -62,7 +62,6 @@ int main()
 	int negArr[ARR_SIZE] = {0};
 	int count_pos = 0;
 	int count_neg = 0;
-
 
 	printf("Enter number: ");
 	Input (arr, ARR_SIZE);
