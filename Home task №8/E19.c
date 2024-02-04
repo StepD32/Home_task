@@ -20,34 +20,18 @@ E19 ДЗ *
 int EnterArr (int arr[], int _num) //описание функции ввода
 {
 	int i;
-	for (i = 0; n > 0; i++) //ввод массива
+	for (i = 0; _num > 0; i++) //ввод массива
 	{
-		arr[count] = _num%10;
+		arr[i] = _num%10;
 		_num /=10;
 	}
 	return i;
 }
 
-void SortArray( int arr[], int n)
-{
-	for (int i = 0; i < n-1; i++)
-	{
-		for (int j = (n - 1); j > i; j--)
-		{
-			if (arr[j-1] > arr[j])
-			{
-				arr[j-1] ^= arr[j];
-				arr[j] ^= arr[j-1];
-				arr[j-1] ^= arr[j];
-			}
-		}
-	}
-}
-
 
 void PrintArray(int arr[], int n)
 {
-	for(int i = 0; i<n; i++)
+	for(int i = n-1; i >= 0; i--)
 		printf("%d ",arr[i]);
 	printf("\n");
 }
@@ -61,7 +45,6 @@ int main()
 	scanf ("%d", &num);
 
 	int count = EnterArr(arrNum,num);
-	SortArray(arrNum,count);
 	PrintArray(arrNum,count);
 
 	return 0;
