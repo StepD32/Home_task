@@ -30,8 +30,7 @@ int inputGetConsol(char *s)
         if(c =='\n'){
              *s++ = 0;   
              break;
-        }
-           
+        }           
         *s++ = c;
     }
     return i;
