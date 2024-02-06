@@ -23,83 +23,75 @@ void sort_even_odd(int n, int a[])
 
 #define  BUFFER_SIZE 20
 
-
-
 int isDigit(char c) // проверяем является ли символ цифрой
 {
-	return ((c>='0')&&(c<='9'));
+    return ((c>='0')&&(c<='9'));
 }
 
 int InputGet(int arr[], int n)
 {
-	int i;
-	char c;
-	while((c=getchar())!='\n')
-	{
-		if(isDigit(c))
-		{
-			int number=0;
-			do
-			{
-				number=number*10+c-'0';
-				c=getchar();
-			}
-			while(isDigit(c));
-			arr[i++] = number;
-			if(c=='\n')
-				break;
-		}
-	}
-	return i;
+    int i;
+    char c;
+    while((c=getchar())!='\n'){
+        if(isDigit(c)){
+            int number=0;
+            do{
+                number=number*10+c-'0';
+                c=getchar();
+            }
+            while(isDigit(c));
+            arr[i++] = number;
+            if(c=='\n')
+                break;
+        }
+    }
+    return i;
 }
 
 
 
 void SortEven(int arr[], int n)
 {
-	int arr_not_even[n];
-	int arr_even[n];
-	int count_even = 0;
-	int count_not_even = 0;
+    int arr_not_even[n];
+    int arr_even[n];
+    int count_even = 0;
+    int count_not_even = 0;
 
-	for(int i = 0; i < n; ++i)
-	{
-		if (!(arr[i]%2))
-		{
-			arr_even[count_even] = arr[i];
-			count_even++;
-		}
-		else
-		{
-			arr_not_even[count_not_even] = arr[i];
-			count_not_even++;
-		}
-	}
+    for(int i = 0; i < n; ++i){
+        if (!(arr[i]%2)){
+            arr_even[count_even] = arr[i];
+            count_even++;
+        }
+        else{
+            arr_not_even[count_not_even] = arr[i];
+            count_not_even++;
+        }
+    }
 
-	for(int j = 0; j < count_even; j++)
-		arr[j] = arr_even[j];
+    for(int j = 0; j < count_even; j++)
+        arr[j] = arr_even[j];
 
-	for(int j = count_even; j < n; j++)
-		arr[j] = arr_not_even[j-count_even];
+    for(int j = count_even; j < n; j++)
+        arr[j] = arr_not_even[j-count_even];
 }
 
 
 void Print(int arr[], int len)
 {
-	for (int i = 0; i < len; i++)
-		printf("%d ",arr[i]);
+    for (int i = 0; i < len; i++)
+        printf("%d ",arr[i]);
 }
 
 int main()
 {
 
-	int buffer[BUFFER_SIZE] = {0};
+    int buffer[BUFFER_SIZE] = {0};
 
-	printf("Enter number: ");
-	int size = InputGet(buffer,BUFFER_SIZE);
-	printf("Buffer size = %d\n",size);
-	SortEven(buffer,size);
-	Print(buffer,size);
+    printf("Enter number: ");
+    int size = InputGet(buffer,BUFFER_SIZE);
+    printf("Buffer size = %d\n",size);
+    SortEven(buffer,size);
+    Print(buffer,size);
 
-	return 0;
+    return 0;
 }
