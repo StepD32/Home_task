@@ -27,8 +27,11 @@ int inputGetConsol(char *s)
     int i = 0;
     char c;
     for(i = 0; (c = getchar()) != '\n'; i++){
-        if(c =='\n')
-            break;
+        if(c =='\n'){
+             *s++ = 0;   
+             break;
+        }
+           
         *s++ = c;
     }
     return i;
@@ -47,10 +50,10 @@ void printDigist(int arr[], int len)
             printf("%d %d ", i, arr[i]);
 }
 
-void printString(char arr[], int len)
+void printString(char str[], int len)
 {
-    for (int i = 0; i < len; i++)
-        printf("%c",arr[i]);
+    for (int i = 0; str[i] !=0; i++)
+        printf("%c",str[i]);
 }
 
 void printStringScanf(char str[])
@@ -63,7 +66,6 @@ void printStringScanf(char str[])
 
 int main()
 {
-
     char str[BUFFER_SIZE] = {0};
     int arr_dig[BUFFER_DIG] = {0};
 
@@ -71,7 +73,7 @@ int main()
     //inputGetConsol(str);
     scanf("%[^'\n']", str);
     //printStringScanf(str);
-    
+
     count_digits(str, arr_dig);
     printDigist(arr_dig,BUFFER_DIG);
     

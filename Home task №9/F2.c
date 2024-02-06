@@ -84,7 +84,6 @@ void Print(int arr[], int len)
 
 int main()
 {
-
     int buffer[BUFFER_SIZE] = {0};
 
     printf("Enter number: ");
