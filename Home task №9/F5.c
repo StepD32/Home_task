@@ -18,7 +18,7 @@ int find_max_array(int size, int a[])
 #include <stdio.h>
 
 #define  BUFFER_SIZE 10000
-#define  BUFFER_DIG 10
+
 
 
 int find_max_array(int _size, int _a[])
