@@ -21,59 +21,52 @@
 
 int Input (int arr[], int n) //описание функции ввода
 {
-	int i;
-	for (i = 0; i < n; i++) //ввод массива
-		scanf ("%d", &arr[i]);
-	return i;
+    int i;
+    for (i = 0; i < n; i++) //ввод массива
+        scanf ("%d", &arr[i]);
+    return i;
 }
 
 void PrintArray(int arr[], int n)
 {
-	for(int i = 0; i<n; i++)
-	{
-		printf("%d ",arr[i]);
-	}
-	printf("\n");
+    for(int i = 0; i<n; i++)
+    {
+        printf("%d ",arr[i]);
+    }
+    printf("\n");
 }
 
-void SelectArr(int _arr[], int _arr_pos[], int _arr_neg[], int n, int *pos, int *neg)
+int SelectArr(int _arr[], int _arr_pos[], int n)
 {
-	for(int i = 0; i < n; i++)
-	{
-		if (_arr[i] > 0 )
-		{
-			_arr_pos[*pos] = _arr[i];
-			*pos +=1;
-		}
-		else if (_arr[i] < 0 )
-		{
-			_arr_neg[*neg] = _arr[i];
-			*neg +=1;
-		}
-	}
+    int _count = 0;
+    
+    for(int i = 0; i < n; i++){
+        if (_arr[i] > 0 ){
+            _arr_pos[_count++] = _arr[i];
+          
+        }
+    }
+    
+    for(int i = 0; i < n-1; i++){
+        if (_arr[i] < 0 ){
+            _arr_pos[_count++] = _arr[i];
+        }
+    }
+    return _count;
 }
-
-
 
 int main()
 {
-	int arr[ARR_SIZE] = {0};
-	int posArr[ARR_SIZE] = {0};
-	int negArr[ARR_SIZE] = {0};
-	int count_pos = 0;
-	int count_neg = 0;
-
-	printf("Enter number: ");
-	Input (arr, ARR_SIZE);
-
-	SelectArr(arr, posArr, negArr, ARR_SIZE, &count_pos, &count_neg);
-	
-	printf("Positive array: ");
-	PrintArray(posArr, count_pos);
-
-	printf("Negative array: ");
-	PrintArray(negArr, count_neg);
-
+    int arr[ARR_SIZE] = {0};
+    int posArr[ARR_SIZE] = {0};
+    int count = 0;
+    
+    printf("Enter number: ");
+    Input (arr, ARR_SIZE);
+    count = SelectArr(arr, posArr, ARR_SIZE);
+    printf("Sort array: ");
+    PrintArray(posArr, count);
+    
 	return 0;
 }
 
