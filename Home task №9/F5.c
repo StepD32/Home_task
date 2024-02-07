@@ -39,7 +39,7 @@ int converNumbers(const char *_str, int *arr)
         if((*_str >= '0') && ( *_str <= '9'))
             num = num*10+(*_str - '0');
        
-        // Склеиваем число если считалит пробел
+        // Склеиваем число если считали пробел
         if(*_str == 0x20){
             arr[count++] = num;
             //printf("%d ", num);
@@ -51,9 +51,7 @@ int converNumbers(const char *_str, int *arr)
             break;
         }    
         _str++;
-       
-    } while(1);
-     
+    } while(1);     
     return count;
 }
 
