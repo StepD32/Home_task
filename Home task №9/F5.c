@@ -49,16 +49,17 @@ int converNumbers(const char *_str, int *arr)
         if ( *_str == 0){
             arr[count] = num;
             break;
-        }    
+        }
         _str++;
-    } while(1);     
+    } while(1);
+    
     return count;
 }
 
 
 int main()
 {
-    char str[BUFFER_SIZE];
+    char str[BUFFER_SIZE] = {0};
     int arr[BUFFER_SIZE] = {0};
 
     printf("Enter: ");
