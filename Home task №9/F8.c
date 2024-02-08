@@ -24,7 +24,8 @@ F8 Практ 2
 
 
 
-int Input(int arr[]){
+int Input(int arr[])
+{
     int i,num;
     while(scanf("%d",&num)==1){
         if (num == 0)
