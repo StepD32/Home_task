@@ -32,7 +32,6 @@ int input(int arr[]){
     return i;
 }
 
-
 void printArray(int arr[], int n)
 {
     for(int i = 0; i<n; i++)
@@ -40,11 +39,11 @@ void printArray(int arr[], int n)
     printf("\n");
 }
 
-
 void find(int _a[],int _size)
 {
     int minNegativ = 0;
     int pos = 0;
+    
     for(int i = 0; i < _size; i++){
         if (_a[i] < minNegativ)
             minNegativ = _a[i];            
@@ -57,7 +56,6 @@ void find(int _a[],int _size)
     _a[pos] ^= _a[_size-1];
     _a[_size-1] ^= _a[pos];
     _a[pos] ^= _a[_size-1];
-
 }
 
 
