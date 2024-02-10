@@ -15,6 +15,7 @@ F11 Практ 3
 */
 
 #include <stdio.h>
+#include <limits.h>
 #define  BUFFER_SIZE 30
 
 
@@ -35,26 +36,27 @@ void printArray(int arr[], int n)
         printf("%d ",arr[i]);
     printf("\n");
 }
-
+//1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30
 void find(int _a[],int _size)
 {
-    int sum = _a[0] + _a[0];
+    int sum = INT_MAX;
     int index_one = 0;
     int index_two = 0;
     for(int i = 0; i < _size; i++){
         for(int j = 0; j < _size-1;j++){
             if (i == j){
-                printf("%d == %d\n",i,j);
+                //printf("%d == %d\n",i,j);
                 continue;
             }
             
             int sum_index = _a[i] + _a[j];  
-            printf("sum_idex = %d, _a[%d] = %d, _a[%d] = %d\n",sum_index, i, _a[i], j, _a[j]);  
-            if( sum > sum_index){
+            //printf("sum_idex = %d, _a[%d] = %d, _a[%d] = %d\n",sum_index, i, _a[i], j, _a[j]);  
+            if(sum > sum_index){
+                //printf("sum = %d, sum_index = %d\n",sum,sum_index); 
                 sum = sum_index;
-                index_one = _a[i];
-                index_two = _a[j];
-                printf("if sum > sum_index\n"); 
+                index_one = i;
+                index_two =j;
+                
             }
         }
     }
