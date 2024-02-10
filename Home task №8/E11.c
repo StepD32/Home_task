@@ -53,7 +53,7 @@ void SortArray( int arr[], int n)
 
 int main()
 {	
-	int arr[ARR_SIZE];
+	int arr[ARR_SIZE] = {0};
 	printf("Enter number: ");
 	Input (arr, ARR_SIZE);
 	SortArray(arr, ARR_SIZE);
