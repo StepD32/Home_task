@@ -1,59 +1,45 @@
-/*
-
-E9
-Циклический сдвиг массива вправо
-Считать массив из 10 элементов и выполнить циклический сдвиг ВПРАВО на 1. 
-
-Данные на входе: 	10 целых чисел через пробел 
-Данные на выходе: 	10 целых чисел через пробел сдвинутых вправо на 1 элемент циклически 
-
-Пример №1
-Данные на входе: 	4 -5 3 10 -4 -6 8 -10 1 0 
-Данные на выходе: 	0 4 -5 3 10 -4 -6 8 -10 1 
-
-Пример №2
-Данные на входе: 	1 2 3 4 5 6 7 8 9 10 
-Данные на выходе: 	10 1 2 3 4 5 6 7 8 9 
-
-*/
-
 #include <stdio.h>
-
-#define  ARR_SIZE 12
  
-void aPrint(int *arr, int len)
-{
-	for (int i = 0; i < len; i++)
-		printf("%d ",arr[i]);
-}
-
-
-
-void shiftArray(int arr[], int size, int shift)
-{
-	int temp[size];
-
-	for (int i = size-1 ; i >= 0 ; i--) {
-		if (i+shift >= size)
-			temp[i+shift-size]= arr[i];
-		else
-			temp[i+shift] = arr[i];
-	}
-
-	for (int i = 0; i < size; i++) {
-		arr[i] = temp[i];
-	}
-}
-
+const int line_width = 256;
  
-int main()
+int main(void)
 {
+char *input_fn = "input.txt";
+char *output_fn = "output.txt";
+char line[line_width];
+char c;
+FILE *fp;  
 
-int array[ARR_SIZE] = {0};
-	for(int i=0; i < ARR_SIZE; i++)
-		scanf("%d", &array[i]);
-	shiftArray(array,ARR_SIZE,4);
-	aPrint(array, ARR_SIZE);
-	return 0;
-} 
 
+    if((fp = fopen(input_fn, "r")) == NULL)
+    {
+        perror("Error occured while opening input file!");
+        return 1;
+    }
+
+
+int count = 0;
+    while(((c = getc(fp)) != EOF) && (c != '\n'))
+        line[count++] = c;
+    line[count] = '\0'; 
+  	
+    fclose(fp);	
+
+
+    if((fp = fopen(output_fn, "w")) == NULL)
+    {
+        perror("Error occured while opening output file!");
+        return 1;
+    } 	
+
+
+    for (int i = 0; i < 3; i++)
+    {
+        if (i)
+            fprintf(fp, ", ");  	
+        fprintf(fp, "%s", line);
+    }  
+    fprintf(fp, " %d", count);
+    fclose(fp); 	
+    return 0;
+}
