@@ -28,7 +28,7 @@ int openFile(FILE *_fp_in, const char *_input_fn){
     return 0;
 }
 
-int readDigitIsFile(FILE *_fp_in, char _str[], int _arr_num[]   )
+int readDigitIsFile(FILE *_fp_in, char _str[], int _arr_num[])
 {
     int _num = 0;
     int _count = 0;
@@ -96,7 +96,7 @@ int main()
 //        return 0;
 //    }
  
-    count_num = readDigitIsFile(fp_in, str, arr_num, BUFFER_SIZE);   
+    count_num = readDigitIsFile(fp_in, str, arr_num);   
     fclose(fp_in);
     Sort(arr_num,count_num); 
     printArr(arr_num,count_num);
