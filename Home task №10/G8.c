@@ -28,7 +28,7 @@ int openFile(FILE *_fp_in, const char *_input_fn){
     return 0;
 }
 
-int readDigitIsFile(FILE *_fp_in,char _str[] ,int _arr_num[], int _size)
+int readDigitIsFile(FILE *_fp_in, char _str[], int _arr_num[]   )
 {
     int _num = 0;
     int _count = 0;
@@ -47,7 +47,7 @@ int readDigitIsFile(FILE *_fp_in,char _str[] ,int _arr_num[], int _size)
             else{
                 _num = atoi(_str);
                 _flag = 0; 
-                memset(_str,0,_size);
+                memset(_str,0,_count);
                 _count = 0;
                 _arr_num[_count_num++] = _num;
             }
@@ -55,7 +55,6 @@ int readDigitIsFile(FILE *_fp_in,char _str[] ,int _arr_num[], int _size)
         
     }
     return _count_num;
-
 }
 
 void Sort(int* arr, int size)
@@ -97,7 +96,7 @@ int main()
 //        return 0;
 //    }
  
-    count_num = readDigitIsFile(fp_in,str,arr_num, BUFFER_SIZE);   
+    count_num = readDigitIsFile(fp_in, str, arr_num, BUFFER_SIZE);   
     fclose(fp_in);
     Sort(arr_num,count_num); 
     printArr(arr_num,count_num);
