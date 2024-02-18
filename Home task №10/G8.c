@@ -20,11 +20,13 @@
 #define BUFFER_SIZE 1000
 
 
-int openFile(FILE *_fp_in, const char *_input_fn){
-    if((_fp_in = fopen(_input_fn, "r")) == NULL){
+int openFile(FILE **_fp_in, const char *_input_fn){
+   
+    if((*_fp_in = fopen(_input_fn, "r")) == NULL){
         perror("Error occured while opening input file!");
         return 1;
     }
+    
     return 0;
 }
 
@@ -85,17 +87,18 @@ int main()
     int arr_num[BUFFER_SIZE] = {0};
     int count_num = 0;
     
-    if((fp_in = fopen(input_fn, "r")) == NULL){
-        perror("Error occured while opening input file!");
-        return 1;
+    //printf("before open %p\n",fp_in);
+    
+    //if((fp_in = fopen(input_fn, "r")) == NULL){
+        //perror("Error occured while opening input file!");
+        //return 1;
+    //}
+    
+    if (openFile(&fp_in, input_fn)){
+        printf("exit program\n");
+        return 0;
     }
-
-//Почему-то не отрабоатывает данная функция
-//    if (openFile(fp_in, input_fn)){
-//        printf("exit program\n");
-//        return 0;
-//    }
- 
+    
     count_num = readDigitIsFile(fp_in, str, arr_num);   
     fclose(fp_in);
     Sort(arr_num,count_num); 

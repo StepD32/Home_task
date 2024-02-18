@@ -28,7 +28,7 @@ int inputGetConsol(char *s)
     char c;
     for(i = 0; (c = getchar()) != '\n'; i++){
         if(c =='\n'){
-             *s++ = 0;   
+             *s++ = '\0';   
              break;
         }           
         *s++ = c;
