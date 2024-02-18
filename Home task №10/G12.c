@@ -20,14 +20,13 @@ G12
 
 
 int openFileRead(FILE **_fp_in, const char *_input_fn)
-{
-   
+{   
     if((*_fp_in = fopen(_input_fn, "r")) == NULL)
     {
         perror("Error occured while opening input file!");
         return 1;
     }
-    
+        
     return 0;
 }
 
@@ -38,7 +37,8 @@ int openFileNewWrite(FILE **_fp_in, const char *_input_fn)
     {
         perror("Error occured while opening input file!");
         return 1;
-    }    
+    }  
+      
     return 0;
 }
 
@@ -91,5 +91,7 @@ int main()
 
     writeStrFile(&fp_in, input_fn, str);
     fclose(fp_in);
+    
+    
     return 0;
 }

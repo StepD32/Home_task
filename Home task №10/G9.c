@@ -21,8 +21,8 @@ G9 ДЗ 4
 #define BUFFER_SIZE 1000
 
 
-int openFile(FILE **_fp_in, const char *_input_fn){
-   
+int openFile(FILE **_fp_in, const char *_input_fn)
+{   
     if((*_fp_in = fopen(_input_fn, "r")) == NULL){
         perror("Error occured while opening input file!");
         return 1;
@@ -31,7 +31,8 @@ int openFile(FILE **_fp_in, const char *_input_fn){
     return 0;
 }
 
-int readStringFile(FILE *_fp_in, char _str[]){
+int readStringFile(FILE *_fp_in, char _str[])
+{
     int _count = 0;
     char _c;
     while(((_c = getc(_fp_in)) != EOF) && (_c != '\n'))
@@ -46,9 +47,12 @@ int delCharIsString(char in_arr[], int size_in, char out_arr[])
     int flag = 0;
     out_arr[0] = in_arr[0];
 
-    for(int i = 0; i < size_in; i++){
-        for(int j = 0; j<size_in; j++){
-            if(in_arr[i] == out_arr[j]){
+    for(int i = 0; i < size_in; i++)
+    {
+        for(int j = 0; j<size_in; j++)
+        {
+            if(in_arr[i] == out_arr[j])
+            {
                 flag = 0;
                 break;
             }

@@ -42,12 +42,12 @@ void readStringFile(FILE *_fp_in){
     int _max_index = 0;
     int size = 0;
     
-    //В цыкле считываем по символьно из файла
+    //В цикле считываем по символьно из файла
     while(1){
         _c = getc(_fp_in);
         
         // Если считали пробел или конец строки или конец файла
-        // Запоминае размер максимального слова и положене в файле
+        // Запоминаем размер максимального слова и положение в файле
         if (_c == ' ' || _c == EOF || _c == '\n'){
             size = _count - _index;
             _index = _count;
@@ -56,7 +56,7 @@ void readStringFile(FILE *_fp_in){
                 _max_index = _count;
             }
             
-            // Если добрались до конца файла или конца строки выходим из цыкла
+            // Если добрались до конца файла или конца строки выходим из цикла
             if (_c == EOF || _c == '\n')
                 break;
         }
@@ -74,7 +74,6 @@ int main()
 {
     FILE *fp_in;
     const char *input_fn = "input.txt";
-
     
     if (openFile(&fp_in, input_fn)){
         printf("exit program\n");

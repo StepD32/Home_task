@@ -25,20 +25,16 @@ int main()
     const char *output_fn = "output.txt";
     char str_one[BUFFER_SIZE] = {0};
     char str_two[BUFFER_SIZE] = {0};
-
     
     if((fp_in = fopen(input_fn, "r")) == NULL){
         perror("Error occured while opening input file!");
         return 1;
     }
-
     
     fscanf(fp_in, "%s", str_one);
-    fclose(fp_in); 
-    
+    fclose(fp_in);     
        
-    int len_str_one = strlen(str_one);
-  
+    int len_str_one = strlen(str_one);  
 
     for(int i = 0; i < len_str_one; i++){
         if(str_one[i] == 'a'){
@@ -59,14 +55,15 @@ int main()
         }
         str_two[i] = str_one[i];
     }
-    printf("%s\n",str_one);
-    printf("%s\n",str_two);
     
+    printf("%s\n",str_one);
+    printf("%s\n",str_two);    
         
     if((fp_out = fopen(output_fn, "w")) == NULL){
         perror("Error occured while opening input file!");
         return 1;
     }
+    
     fprintf(fp_out,"%s",str_two);
     fclose(fp_out);    
     
