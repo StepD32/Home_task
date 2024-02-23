@@ -55,12 +55,12 @@ int writeStrFile(FILE **_fp_in, const char *_input_fn , const char* _str)
         else
         {
             tmp_str[index++] = '\0';
-            printf("%s\n",tmp_str);            
+            printf("%s\n",tmp_str);
             index = 0;
             fputs(tmp_str, *_fp_in);
-            fputs("\n", *_fp_in);            
+            fputs("\n", *_fp_in);
             if(*_str == '\0')
-                break;            
+                break;
         }
         _str++;
     }

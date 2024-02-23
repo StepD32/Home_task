@@ -1,0 +1,7 @@
+{
+    "C_Cpp.default.compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+    "editor.mouseWheelZoom": true,
+    "files.associations": {
+        "limits": "c"
+    }
+}

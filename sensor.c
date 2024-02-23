@@ -13,7 +13,7 @@ struct sensor {
 struct data
 {
     uint32_t number;
-    struct   sensor info[SIZE];
+    struct sensor info[SIZE];
 };
 
 
@@ -27,9 +27,9 @@ union sensor_serdes
 void cgangeIJ(struct sensor* info,int i, int j)
 {
     struct sensor temp;
-    temp    = info[i];
-    info[i] = info[j];
-    info[j] = temp;
+    temp    =   info[i];
+    info[i] =   info[j];
+    info[j] =   temp;
 }
 
 //упорядочивающую его по неубыванию температуры
@@ -55,8 +55,7 @@ void SortByDate(struct sensor* info,int n) {
                 cgangeIJ(info,i,j);
 }
 
-void AddRecord(struct sensor* info,int number,
-               uint16_t year,uint8_t month,uint8_t day,int8_t t)
+void AddRecord(struct sensor* info, int number, uint16_t year,uint8_t month,uint8_t day,int8_t t)
 {
     info[number].year  = year;
     info[number].month = month;
@@ -126,6 +125,7 @@ int main(int argc, char **argv)
     struct data d;
     union sensor_serdes* ds = (union sensor_serdes*)&d;
     d.number=AddInfo(d.info);
+    printf("Start\n");
     print(d.info,d.number);
     save_bin_ser(ds);
     printf("\nSort by t\n");
@@ -136,5 +136,6 @@ int main(int argc, char **argv)
     print(d.info,d.number);
     load_bin_des(ds);
     print(d.info,d.number);
+    printf("Stop\n");
     return 0;
 }
