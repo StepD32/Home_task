@@ -3,5 +3,5 @@
 *.cpp
 *.json
 *.bin
-.vscode
+.vscode/
 test*
