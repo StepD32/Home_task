@@ -135,39 +135,21 @@ int8_t max_temp_year(Sensor *date, uint8_t size, Season *m)
     return max_temp;
 }
 
-
-void static_output_fun(Sensor *date, uint8_t size, Season m){
+void static_output_fun(Sensor *date, uint8_t size, Season *m){
    //int tmp_index = 0;
-   if (m.mount == Undefined){
+   if (m->mount == Undefined){
         for(uint8_t i = 1; i <= 13; i++){
-            m.mount = i;
+            m->mount = i;
             for(int j = 0; j<size; j++){
-                if(m.mount == date[j].month && date[j].month != date[j-1].month ){
-                    int8_t avr_month = avr_temp_month(date, size, &m);	
-                    int8_t min_month = min_temp_month(date, size, &m);
-                    int8_t max_month = max_temp_month(date, size, &m);
-                    printf("%d %d %d %d %d %d\n", i, date[j].year, date[j].month, avr_month, min_month, max_month);
-                }
+                if(m->mount == date[j].month && date[j].month != date[j-1].month ){
+                    int8_t avr_month = avr_temp_month(date, size, m);	
+                    int8_t min_month = min_temp_month(date, size, m);
+                    int8_t max_month = max_temp_month(date, size, m);
+                    printf("%d %d %d %d %d %d\n", j, date[j].year, date[j].month, avr_month, min_month, max_month);
+                } 
             }
         }
    }else{
-    
+
    }
 }
-
-
-
-/*
-void static_output_fun(Sensor *date, uint8_t size, Season m){
-   int tmp_index = 0;
-   if (m.mount == Undefined){
-        for(uint8_t i = 1; i <= 12; i++){
-                int8_t avr_month = avr_temp_month(date, size, &m);	
-                int8_t min_month = min_temp_month(date, size, &m);
-                int8_t max_month = max_temp_month(date, size, &m);
-                printf("%d %d %d %d %d %d\n", i, date[tmp_index].year, date[tmp_index].month, avr_month, min_month, max_month);
-                tmp_index++;
-        }
-   }
-}
-*/

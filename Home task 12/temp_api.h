@@ -70,7 +70,7 @@ int8_t avr_temp_year(Sensor *date, uint8_t size, Season *m);
 int8_t min_temp_year(Sensor *date, uint8_t size, Season *m);
 int8_t max_temp_year(Sensor *date, uint8_t size, Season *m);
 
-void static_output_fun(Sensor *date, uint8_t size, Season m);
+void static_output_fun(Sensor *date, uint8_t size, Season *m);
 
 
 #endif

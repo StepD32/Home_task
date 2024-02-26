@@ -9,7 +9,7 @@ int main(int argc, char **argv)
 	int size_strc_sensor = AddInfo(sensor);
 
 	printf("# Year Month MonthAvr MonthMax MonthMin\n");
-	static_output_fun(sensor, size_strc_sensor, st_month);
+	static_output_fun(sensor, size_strc_sensor, &st_month);
 	int8_t avr_year = avr_temp_year(sensor, size_strc_sensor, &st_month);
 	int8_t min_year = min_temp_year(sensor, size_strc_sensor, &st_month);
 	int8_t max_year = max_temp_year(sensor, size_strc_sensor, &st_month);
