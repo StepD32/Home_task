@@ -21,12 +21,26 @@
  * 
  */
 
-
 #include "temp_api.h"
+
+#define SIZE_SENSOR 4
 
 int main(int argc, char **argv)
 {
-	
+	SENSOR Senser[SIZE_SENSOR];
+	MONTH month  = yan;
+	int num = 0;
+  AddInfo(Senser, num);
+
+	int8_t temp  = avr_temp_month(Senser, SIZE_SENSOR, month);	
+	printf("temperature avr = %d\n", temp);	
+
+	int8_t min = min_temp_month(Senser, SIZE_SENSOR, month);
+	printf("temperature min = %d\n", min);
+
+	int8_t max = max_temp_month(Senser, SIZE_SENSOR, month);
+	printf("temperature max = %d\n", max);
+
 	return 0;
 }
 

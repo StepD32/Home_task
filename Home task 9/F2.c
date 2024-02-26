@@ -52,8 +52,8 @@ int InputGet(int arr[], int n)
 
 void SortEven(int arr[], int n)
 {
-    int arr_not_even[n];
-    int arr_even[n];
+    int arr_not_even[100];
+    int arr_even[100];
     int count_even = 0;
     int count_not_even = 0;
 
