@@ -30,7 +30,7 @@ int main(int argc, char **argv)
 	SENSOR Senser[SIZE_SENSOR];
 	MONTH month  = yan;
 	int num = 0;
-  AddInfo(Senser, num);
+	AddInfo(Senser, num);
 
 	int8_t temp  = avr_temp_month(Senser, SIZE_SENSOR, month);	
 	printf("temperature avr = %d\n", temp);	
