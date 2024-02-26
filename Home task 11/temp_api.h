@@ -18,21 +18,38 @@
 	- temperature - целое число от -99 до 99
 */
 
+typedef enum {
+    January = 1,
+    February,
+    March,
+    April,
+    May,
+    June,
+    July,
+    August,
+    September,
+    October,
+    November,
+    December
+
+} Month;
+
 typedef struct {
     uint16_t year;
-    uint8_t month;
-    uint8_t day;  
-    uint8_t hour;
-    uint8_t min;
+    uint8_t month       :4;
+    uint8_t day         :5;  
+    uint8_t hour        :5;
+    uint8_t min         :6;
     int8_t temperature;
-} SENSOR;
+} Sensor;
 
-typedef enum{
-    yan = 8
+typedef struct{
+    uint16_t year;
+    Month mount;
+} Season;
 
-} MONTH;
 
-uint8_t addRecord(SENSOR *date, uint8_t index,
+uint8_t addRecord(Sensor *date, uint8_t index,
                 uint16_t year, 
                 uint8_t mount, 
                 uint8_t day, 
@@ -42,16 +59,16 @@ uint8_t addRecord(SENSOR *date, uint8_t index,
             );
 
 
-int AddInfo(SENSOR* info, int num);
+int AddInfo(Sensor* info);
 
-void print(SENSOR* date, int num);
+void print(Sensor* date, int num);
 
-int8_t avr_temp_month(SENSOR *date, uint8_t size, MONTH month);
-int8_t min_temp_month(SENSOR *date, uint8_t size, MONTH month);
-int max_temp_month(SENSOR *date, uint8_t size, MONTH month);
+int8_t avr_temp_month(Sensor *date, uint8_t size, Season *m);
+int8_t min_temp_month(Sensor *date, uint8_t size, Season *m);
+int max_temp_month(Sensor *date, uint8_t size, Season *m);
 
-int8_t avr_temp_year(SENSOR *date, uint8_t size, uint8_t year);
-int8_t min_temp_year(SENSOR *date, uint8_t size, uint8_t year);
-int8_t max_temp_year(SENSOR *date, uint8_t size, uint8_t year);
+int8_t avr_temp_year(Sensor *date, uint8_t size, Season *m);
+int8_t min_temp_year(Sensor *date, uint8_t size, Season *m);
+int8_t max_temp_year(Sensor *date, uint8_t size, Season *m);
 
 #endif

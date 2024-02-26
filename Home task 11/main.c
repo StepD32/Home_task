@@ -1,45 +1,34 @@
-/*
- * main.c
- * 
- * Copyright 2024 Mitya <Mitya@SER5>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * 
- */
-
 #include "temp_api.h"
 
 #define SIZE_SENSOR 4
 
 int main(int argc, char **argv)
 {
-	SENSOR Senser[SIZE_SENSOR];
-	MONTH month  = yan;
-	int num = 0;
-	AddInfo(Senser, num);
+	Sensor Senser[SIZE_SENSOR];
+	Season st_month = {2021, August};
 
-	int8_t temp  = avr_temp_month(Senser, SIZE_SENSOR, month);	
-	printf("temperature avr = %d\n", temp);	
+	AddInfo(Senser);
 
-	int8_t min = min_temp_month(Senser, SIZE_SENSOR, month);
-	printf("temperature min = %d\n", min);
+	for(int i = 0; i<SIZE_SENSOR; i++)
+		print(Senser,i);
 
-	int8_t max = max_temp_month(Senser, SIZE_SENSOR, month);
-	printf("temperature max = %d\n", max);
+	int8_t avr_month  = avr_temp_month(Senser, SIZE_SENSOR, &st_month);	
+	printf("temperature month avr = %d\n", avr_month);	
+
+	int8_t min_month = min_temp_month(Senser, SIZE_SENSOR, &st_month);
+	printf("temperature month min = %d\n", min_month);
+
+	int8_t max_month = max_temp_month(Senser, SIZE_SENSOR, &st_month);
+	printf("temperature month max = %d\n", max_month);
+		
+	int8_t avr_year = avr_temp_year(Senser, SIZE_SENSOR, &st_month);
+	printf("temperature year avr  = %d\n", avr_year);
+	
+	int8_t min_year = min_temp_year(Senser, SIZE_SENSOR, &st_month);
+	printf("temperature year min  = %d\n", min_year);
+
+	int8_t max_year = max_temp_year(Senser, SIZE_SENSOR, &st_month);
+	printf("temperature year max  = %d\n", max_year);
 
 	return 0;
 }
