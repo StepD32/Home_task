@@ -1,5 +1,3 @@
-#include "temp_api.h"
-
 /*
 Создать прототипы (заглушки) функций:
  	Вывода статистики по каждому месяцу:
@@ -13,6 +11,10 @@
 */
 
 //Функция добавления новых данных о температоруре в массив структор по индексу.
+
+#include "temp_api.h"
+
+
 uint8_t addRecord (Sensor *date, uint8_t index, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, 
                 uint8_t min, int8_t temperature)
 {

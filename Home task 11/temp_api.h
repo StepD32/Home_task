@@ -48,7 +48,6 @@ typedef struct{
     Month mount;
 } Season;
 
-
 uint8_t addRecord(Sensor *date, uint8_t index,
                 uint16_t year, 
                 uint8_t mount, 
@@ -58,9 +57,7 @@ uint8_t addRecord(Sensor *date, uint8_t index,
                 int8_t temperature            
             );
 
-
 int AddInfo(Sensor* info);
-
 void print(Sensor* date, int num);
 
 int8_t avr_temp_month(Sensor *date, uint8_t size, Season *m);
