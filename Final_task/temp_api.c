@@ -180,13 +180,13 @@ int openFile(FILE **_fp_in, const char *_input_fn)
 
 uint32_t readFile(FILE **_fp_in, Sensor *date){
     uint32_t count = 0;
-    int r;	
+    int r;
     int Y, M, D, h, m, t;
-	while (r = fscanf(*_fp_in, "%d;%d;%d;%d;%d;%d", &Y, &M, &D, &h, &m, &t)){
-	    static int line = 1;		
-		if (r == -1)
-			return count;
-		if (r < 6){
+    while (r = fscanf(*_fp_in, "%d;%d;%d;%d;%d;%d", &Y, &M, &D, &h, &m, &t)){
+        static int line = 1;		
+        if (r == -1)
+            return count;
+        if (r < 6){
 			char s[20];
    			fgets(s,sizeof(s),*_fp_in);
     		printf("Error in line %d value %s", line, s);
