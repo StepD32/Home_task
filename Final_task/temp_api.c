@@ -10,7 +10,7 @@
         - максимальная температура 
 */
 
-//Функция добавления новых данных о температоруре в массив структор по индексу.
+//Функция добавления новых данных о температуре в массив структур по индексу.
 
 #include "temp_api.h"
 
@@ -34,7 +34,7 @@ int DelSensor(Sensor *date, uint16_t index, int struc_size){
     }
     return --struc_size;
 }
-//Функция печати данный из массива структор по индексу 
+//Функция печати данных из массива структур по индексу
 void print(Sensor *date, uint16_t size_struct) 
 {
     for(int16_t i = 0; i < size_struct; i++)
@@ -49,7 +49,7 @@ void print(Sensor *date, uint16_t size_struct)
     );
 }
 
-//Высчитываем среднию температуру в месяцаы, проходя по всему массиву структор.
+//Высчитываем среднюю температуру в месяц, проходит по всему массиву структур.
 float avr_temp_month(Sensor *date, uint32_t size, Season *_season)
 {
     uint32_t  count = 0;
@@ -66,7 +66,7 @@ float avr_temp_month(Sensor *date, uint32_t size, Season *_season)
     return sum_temp/count;
 }
 
-//Высчитываем минимальную температуру месяца, проходя по всему массиву структор.
+//Высчитываем минимальную температуру месяца, проходя по всему массиву структур.
 int16_t min_temp_month(Sensor *date, uint32_t size, Season *_season)
 {
     int min_temp = 99;
@@ -79,7 +79,7 @@ int16_t min_temp_month(Sensor *date, uint32_t size, Season *_season)
     return min_temp;
 }
 
-//Высчитываем максимальную температуру месяца, проходя по всему массиву структор.
+//Высчитываем максимальную температуру месяца, проходя по всему массиву структур.
 int16_t max_temp_month(Sensor* date, uint32_t size, Season *_season)
 {
     int8_t  max_temp = -99;
@@ -92,7 +92,7 @@ int16_t max_temp_month(Sensor* date, uint32_t size, Season *_season)
     return max_temp;
 }
 
-//Высчитываем среднию температуру в месяцаы, проходя по всему массиву структор.
+//Высчитываем среднюю температуру в месяц, проходя по всему массиву структур.
 int16_t avr_temp_year(Sensor *date, uint32_t size, Season *_season)
 {
     int8_t  count = 0;
