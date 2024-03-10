@@ -10,10 +10,10 @@ int main(int argc, char **argv)
 
 	FILE *fp;
 	char name_file[] = "temperature_big2.csv";
-    if (openFile(&fp, name_file)){
-        printf("Exit program.\n");
-        return 0;
-    }	
+	if (openFile(&fp, name_file)){
+		printf("Exit program.\n");
+		return 0;
+	}	
 	uint32_t count_date  = readFile(&fp, sensor);
 	fclose(fp);
 
