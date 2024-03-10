@@ -174,8 +174,7 @@ int openFile(FILE **_fp_in, const char *_input_fn)
     if((*_fp_in = fopen(_input_fn, "r")) == NULL){
         perror("Error occured while opening input file");
         return 1;
-    }
-    
+    }    
     return 0;
 }
 
@@ -192,10 +191,8 @@ uint32_t readFile(FILE **_fp_in, Sensor *date){
    			fgets(s,sizeof(s),*_fp_in);
     		printf("Error in line %d value %s", line, s);
 		}
-		else{
+		else
             addRecord(date,count++,Y,M,D,h,m,t); 
-            //printf("Add record %d\n",count);
-        }
-		line++;
+        line++;
 	}
 }
