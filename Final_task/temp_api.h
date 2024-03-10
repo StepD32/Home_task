@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 
 #define SIZE 30
@@ -50,27 +51,34 @@ typedef struct{
     Month mount;
 } Season;
 
-uint8_t addRecord(Sensor *date, uint8_t index,
+void addRecord(Sensor *date, uint32_t index,
                 uint16_t year, 
                 uint8_t mount, 
                 uint8_t day, 
                 uint8_t hour, 
                 uint8_t min, 
-                int8_t temperature            
+                int16_t temperature            
             );
 
-int AddInfo(Sensor* info);
-void print(Sensor* date, int num);
+int DelSensor(Sensor *date, uint16_t index,  int struc_size);
 
-int8_t avr_temp_month(Sensor *date, uint8_t size, Season *m);
-int8_t min_temp_month(Sensor *date, uint8_t size, Season *m);
-int8_t max_temp_month(Sensor *date, uint8_t size, Season *m);
+void print(Sensor *date, uint16_t num);
 
-int8_t avr_temp_year(Sensor *date, uint8_t size, Season *m);
-int8_t min_temp_year(Sensor *date, uint8_t size, Season *m);
-int8_t max_temp_year(Sensor *date, uint8_t size, Season *m);
+float avr_temp_month(Sensor *date, uint32_t size, Season *m);
+int16_t min_temp_month(Sensor *date, uint32_t size, Season *m);
+int16_t max_temp_month(Sensor *date, uint32_t size, Season *m);
 
-void static_output_fun(Sensor *date, uint8_t size, Season *m);
+int16_t avr_temp_year(Sensor *date, uint32_t size, Season *m);
+int16_t min_temp_year(Sensor *date, uint32_t size, Season *m);
+int16_t max_temp_year(Sensor *date, uint32_t size, Season *m);
 
+void static_output_fun(Sensor *date, uint32_t size, Season *m);
 
+void swap(Sensor *date, uint32_t num_one, uint32_t num_two);
+
+void sortByDate(Sensor *date, uint16_t num_one, uint16_t size);
+uint32_t dateToInt(Sensor *date);
+
+int openFile(FILE **_fp_in, const char *_input_fn);
+uint32_t readFile(FILE **_fp_in, Sensor *date);
 #endif

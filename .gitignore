@@ -2,6 +2,10 @@
 *.exe
 *.cpp
 *.json
+*.csv
 *.bin
+*.pdf
+*.zip
 .vscode/
 test*
+Home_task_12/

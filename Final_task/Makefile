@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -std=c99 -Wall
+CFLAGS = -g -std=c99 -Wall
 all: prog
 
 prog: main.o temp_api.o
