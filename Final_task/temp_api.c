@@ -187,12 +187,12 @@ uint32_t readFile(FILE **_fp_in, Sensor *date){
         if (r == -1)
             return count;
         if (r < 6){
-			char s[20];
-   			fgets(s,sizeof(s),*_fp_in);
-    		printf("Error in line %d value %s", line, s);
-		}
-		else
+            char s[20];
+            fgets(s,sizeof(s),*_fp_in);
+            printf("Error in line %d value %s", line, s);
+        }
+        else
             addRecord(date,count++,Y,M,D,h,m,t); 
         line++;
-	}
+    }
 }
