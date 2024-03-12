@@ -14,49 +14,61 @@
 
 #include "temp_api.h"
 
-void addRecord (Sensor *date, uint32_t index, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, 
+void addRecord (tSensor *pDate, uint32_t index, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, 
                 uint8_t min, int16_t temperature)
 {
-    date[index].year = year;
-    date[index].month = mount;
-    date[index].day = day;
-    date[index].hour = hour;
-    date[index].min = min;
-    date[index].temperature = temperature; 
+    pDate[index].year = year;
+    pDate[index].month = mount;
+    pDate[index].day = day;
+    pDate[index].hour = hour;
+    pDate[index].min = min;
+    pDate[index].temperature = temperature; 
+
+}
+
+void addRecordNode (tSensor* pDate, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, 
+                uint8_t min, int16_t temperature)
+{
+    pDate->year = year;
+    pDate->month = mount;
+    pDate->day = day;
+    pDate->hour = hour;
+    pDate->min = min;
+    pDate->temperature = temperature; 
 
 }
         
 
-int DelSensor(Sensor *date, uint16_t index, int struc_size){
+int DelSensor(tSensor *pDate, uint16_t index, int struc_size){
     int count = struc_size - index;
     for(int i = index; i <= count; i++){
-        date[i] = date[i+1];
+        pDate[i] = pDate[i+1];
     }
     return --struc_size;
 }
 //Функция печати данных из массива структур по индексу
-void print(Sensor *date, uint16_t size_struct) 
+void print(tSensor *pDate, uint16_t size_struct) 
 {
     for(int16_t i = 0; i < size_struct; i++)
     printf("%d %04d-%02d-%02d %02d:%02d temp = %d\n",
             i,
-            date[i].year,
-            date[i].month,
-            date[i].day,
-            date[i].hour,
-            date[i].min,
-            date[i].temperature
+            pDate[i].year,
+            pDate[i].month,
+            pDate[i].day,
+            pDate[i].hour,
+            pDate[i].min,
+            pDate[i].temperature
     );
 }
 
 //Высчитываем среднюю температуру в месяц, проходит по всему массиву структур.
-float avr_temp_month(Sensor *date, uint32_t size, Season *_season)
+float avr_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
     uint32_t  count = 0;
-    float sum_temp = 0;
+    float sum_temp = 0.0;
     for(uint32_t i = 0; i < size; i++){       
-       if(date[i].month == _season->mount){
-            int temp = date[i].temperature;
+       if(pDate[i].month == pSeason->month){
+            int temp = pDate[i].temperature;
             sum_temp += temp;             
             count++;
         }
@@ -67,39 +79,39 @@ float avr_temp_month(Sensor *date, uint32_t size, Season *_season)
 }
 
 //Высчитываем минимальную температуру месяца, проходя по всему массиву структур.
-int16_t min_temp_month(Sensor *date, uint32_t size, Season *_season)
+int16_t min_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
     int min_temp = 99;
     for(uint32_t i = 0; i < size; i++) {
-       if(date[i].month == _season->mount){    
-            if (date[i].temperature < min_temp)
-                min_temp = date[i].temperature;
+       if(pDate[i].month == pSeason->month){    
+            if (pDate[i].temperature < min_temp)
+                min_temp = pDate[i].temperature;
        }
     }
     return min_temp;
 }
 
 //Высчитываем максимальную температуру месяца, проходя по всему массиву структур.
-int16_t max_temp_month(Sensor* date, uint32_t size, Season *_season)
+int16_t max_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
     int8_t  max_temp = -99;
     for(uint32_t  i = 0; i < size; i++){
-       if(date[i].month == _season->mount){    
-            if(date[i].temperature > max_temp)
-                max_temp = date[i].temperature;
+       if(pDate[i].month == pSeason->month){    
+            if(pDate[i].temperature > max_temp)
+                max_temp = pDate[i].temperature;
        }
     }
     return max_temp;
 }
 
 //Высчитываем среднюю температуру в месяц, проходя по всему массиву структур.
-int16_t avr_temp_year(Sensor *date, uint32_t size, Season *_season)
+float avr_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
-    int8_t  count = 0;
-    int8_t  sum_temp = 0;
+    uint32_t  count = 0;
+    float  sum_temp = 0.0;
     for(int i = 0; i < size; i++){       
-       if(date[i].year == _season->year){
-            sum_temp += date[i].temperature;             
+       if(pDate[i].year == pSeason->year){
+            sum_temp += pDate[i].temperature;             
             count++;       
        }
     }
@@ -108,65 +120,65 @@ int16_t avr_temp_year(Sensor *date, uint32_t size, Season *_season)
     return sum_temp/count;
 }
 
-int16_t min_temp_year(Sensor *date, uint32_t size, Season *_season)
+int16_t min_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
-    int min_temp = date[0].temperature;
+    int min_temp = pDate[0].temperature;
     for(int i = 0; i < size; i++){
-       if(date[i].year == _season->year){    
-            if (date[i].temperature < min_temp)
-                min_temp = date[i].temperature;
+       if(pDate[i].year == pSeason->year){    
+            if (pDate[i].temperature < min_temp)
+                min_temp = pDate[i].temperature;
        }
     }
     return min_temp;
 }
 
-int16_t max_temp_year(Sensor *date, uint32_t size, Season *_season)
+int16_t max_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
     int max_temp = 0;
     for(int i = 0; i < size; i++){
-       if(date[i].year == _season->year){    
-            if (date[i].temperature > max_temp)
-                max_temp = date[i].temperature;
+       if(pDate[i].year == pSeason->year){    
+            if (pDate[i].temperature > max_temp)
+                max_temp = pDate[i].temperature;
        }
     }
     return max_temp;
 }
 
-void static_output_fun(Sensor *date, uint32_t size, Season *_season)
+void static_output_fun(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
    //int tmp_index = 0;
-   if (_season->mount == Undefined){
+   if (pSeason->month == Undefined){
         for(uint8_t i = 1; i <= 13; i++){
-            _season->mount = i;
+            pSeason->month = i;
             for(uint32_t j = 0; j < size; j++){
-                if(_season->mount == date[j].month && date[j].month != date[j-1].month ){
-                    float avr_month = avr_temp_month(date, size, _season);	
-                    int16_t min_month = min_temp_month(date, size, _season);
-                    int16_t max_month = max_temp_month(date, size, _season);
-                    printf("%d %2d %3d %6.2f %8d %8d\n", i, date[j].year, date[j].month, avr_month, min_month, max_month);
+                if(pSeason->month == pDate[j].month && pDate[j].month != pDate[j-1].month ){
+                    float avr_month = avr_temp_month(pDate, size, pSeason);	
+                    int16_t min_month = min_temp_month(pDate, size, pSeason);
+                    int16_t max_month = max_temp_month(pDate, size, pSeason);
+                    printf("%d %2d %3d %6.2f %8d %8d\n", i, pDate[j].year, pDate[j].month, avr_month, min_month, max_month);
                 } 
             }
         }
    }
 }
 
-void swap(Sensor *date, uint32_t num_one, uint32_t num_two)
+void swap(tSensor *pDate, uint32_t num_one, uint32_t num_two)
 {    
-    Sensor temp;
-    temp  = date[num_one];
-    date[num_one] = date[num_two];
-    date[num_two] = temp;
+    tSensor temp;
+    temp  = pDate[num_one];
+    pDate[num_one] = pDate[num_two];
+    pDate[num_two] = temp;
 }
 
-void sortByDate(Sensor *date, uint16_t num_one, uint16_t size) {
+void sortByDate(tSensor *pDate, uint16_t num_one, uint16_t size) {
     for(int i = 0; i < size; ++i)
         for(int j =i ; j < size; ++j)
-            if(dateToInt(date+i) >= dateToInt(date+j))
-                swap(date,i,j);
+            if(dateToInt(pDate+i) >= dateToInt(pDate+j))
+                swap(pDate,i,j);
 }
 
-uint32_t dateToInt(Sensor *date) {
-    return date->year << 16 | date->month << 8 | date->day;
+uint32_t dateToInt(tSensor *pDate) {
+    return pDate->year << 16 | pDate->month << 8 | pDate->day;
 }
 
 int openFile(FILE **_fp_in, const char *_input_fn)
@@ -178,21 +190,93 @@ int openFile(FILE **_fp_in, const char *_input_fn)
     return 0;
 }
 
-uint32_t readFile(FILE **_fp_in, Sensor *date){
+uint32_t readFile(FILE **_fp_in, tSensor *pDate){
     uint32_t count = 0;
     int r;
     int Y, M, D, h, m, t;
-    while (r = fscanf(*_fp_in, "%d;%d;%d;%d;%d;%d", &Y, &M, &D, &h, &m, &t)){
+    while (1){  
+        r = fscanf(*_fp_in, "%d;%d;%d;%d;%d;%d", &Y, &M, &D, &h, &m, &t);
         static int line = 1;		
-        if (r == -1)
+        if (r == EOF)
             return count;
         if (r < 6){
             char s[20];
             fgets(s,sizeof(s),*_fp_in);
-            printf("Error in line %d value %s", line, s);
+            printf("Error in line %d value %s\n", line, s);
         }
         else
-            addRecord(date,count++,Y,M,D,h,m,t); 
+            addRecord(pDate,count++,Y,M,D,h,m,t); 
         line++;
     }
+}
+
+
+
+uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead){
+    tSensor date;
+    uint32_t count = 0;
+    int r;
+    int Y, M, D, h, m, t;
+    while (1){  
+        r = fscanf(*_fp_in, "%d;%d;%d;%d;%d;%d", &Y, &M, &D, &h, &m, &t);
+        static int line = 1;		
+        if (r == EOF)
+            return count;
+        if (r < 6){
+            char s[20];
+            fgets(s,sizeof(s),*_fp_in);
+            printf("Error in line %d value %s\n", line, s);
+        }
+        else{
+            addRecordNode(&date,Y,M,D,h,m,t); 
+            if(!*pHead){
+                *pHead = addListFront(*pHead,date);
+                *pBack = *pHead;
+            }else
+                *pBack = addListBack(*pBack,date);
+            count++;
+        }
+        line++;
+    }
+}
+
+tNode* addListFront(tNode *pHead, tSensor data){
+    tNode* pNode = malloc(sizeof(tNode));
+    pNode->data = data;
+    pNode->next = pHead;
+    return pNode;
+}
+
+tNode* addListBack(tNode *pBack, tSensor data){
+    
+    tNode* pNode;
+    pNode = malloc(sizeof(tNode));
+    pNode->data = data;
+    pNode->next = NULL; 
+    pBack->next = pNode;
+    return pNode;
+}
+
+tNode* delList(tNode *pTop){
+    if(pTop == NULL)
+        return pTop;
+    tNode *pNode = pTop->next;
+    free(pTop);
+    return pNode;
+}
+
+void printList(tNode *pTop){
+    for(tNode *pNode = pTop; pNode != NULL; pNode = pNode->next)
+    printf("%04d-%02d-%02d %02d:%02d temp = %d\n",
+            pNode->data.year,
+            pNode->data.month,
+            pNode->data.day,
+            pNode->data.hour,
+            pNode->data.min,
+            pNode->data.temperature
+    );
+}
+
+int emptyList(tNode *pList) {
+    return pList==NULL;
 }

@@ -4,30 +4,39 @@
 
 int main(int argc, char **argv)
 {
-	//Sensor sensor[SIZE_SENSOR];
-	Sensor* sensor = malloc(SIZE_SENSOR*sizeof(Sensor));
-	Season st_month = {2021, Undefined};
+	//Sensor* sensor = malloc(SIZE_SENSOR*sizeof(Sensor));
+	//if(!sensor)
+	//	return -1;
+
+
+	tNode *pBack = NULL;
+	tNode *pHead = NULL;
+	tSeason st_month = {2021, Undefined};
 
 	FILE *fp;
-	char name_file[] = "temperature_big2.csv";
+	char name_file[] = "temperature_big.csv";
+
 	if (openFile(&fp, name_file)){
 		printf("Exit program.\n");
 		return 0;
 	}	
-	uint32_t count_date  = readFile(&fp, sensor);
+
+	uint32_t count_date  = readFileNode(&fp, &pBack, &pHead);
 	fclose(fp);
 
 	printf("Processed values = %d\n", count_date);
+	printList(pHead);
 
+/*
 	printf("# Year Month MonthAvr MonthMin MonthMax\n");
 	static_output_fun(sensor, count_date, &st_month);
-	int16_t avr_year = avr_temp_year(sensor, count_date, &st_month);
+	float avr_year = avr_temp_year(sensor, count_date, &st_month);
 	int16_t min_year = min_temp_year(sensor, count_date, &st_month);
 	int16_t max_year = max_temp_year(sensor, count_date, &st_month);
-	printf("Year statistic: average %d, min %d,  max %d\n", avr_year, min_year, max_year);
+	printf("Year statistic: average %0.5f, min %d,  max %dB\n", avr_year, min_year, max_year);
 
 	free(sensor);
-/*
+
 	printf("\nPrint these structures\n");
 	print(sensor, size_strc_sensor);
 

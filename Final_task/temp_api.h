@@ -34,7 +34,7 @@ typedef enum {
     November,
     December
 
-} Month;
+} tMonth;
 
 typedef struct {
     uint16_t year;
@@ -43,15 +43,19 @@ typedef struct {
     uint8_t hour        :5;
     uint8_t min         :6;
     int8_t temperature;
-    int16_t count;
-} Sensor;
+} tSensor;
+
+typedef struct node{
+    tSensor data;
+    struct node* next; 
+} tNode;
 
 typedef struct{
     uint16_t year;
-    Month mount;
-} Season;
+    tMonth month;
+} tSeason;
 
-void addRecord(Sensor *date, uint32_t index,
+void addRecord(tSensor *pDate, uint32_t index,
                 uint16_t year, 
                 uint8_t mount, 
                 uint8_t day, 
@@ -60,25 +64,34 @@ void addRecord(Sensor *date, uint32_t index,
                 int16_t temperature            
             );
 
-int DelSensor(Sensor *date, uint16_t index,  int struc_size);
+int DelSensor(tSensor *pDate, uint16_t index,  int struc_size);
 
-void print(Sensor *date, uint16_t num);
+void print(tSensor *pDate, uint16_t num);
 
-float avr_temp_month(Sensor *date, uint32_t size, Season *m);
-int16_t min_temp_month(Sensor *date, uint32_t size, Season *m);
-int16_t max_temp_month(Sensor *date, uint32_t size, Season *m);
+float avr_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason);
+int16_t min_temp_month(tSensor *pDate, uint32_t size,tSeason *pSeason);
+int16_t max_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason);
 
-int16_t avr_temp_year(Sensor *date, uint32_t size, Season *m);
-int16_t min_temp_year(Sensor *date, uint32_t size, Season *m);
-int16_t max_temp_year(Sensor *date, uint32_t size, Season *m);
+float avr_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason);
+int16_t min_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason);
+int16_t max_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason);
 
-void static_output_fun(Sensor *date, uint32_t size, Season *m);
+void static_output_fun(tSensor *pDate, uint32_t size, tSeason *pSeason);
 
-void swap(Sensor *date, uint32_t num_one, uint32_t num_two);
+void swap(tSensor *pDate, uint32_t num_one, uint32_t num_two);
 
-void sortByDate(Sensor *date, uint16_t num_one, uint16_t size);
-uint32_t dateToInt(Sensor *date);
+void sortByDate(tSensor *pDate, uint16_t num_one, uint16_t size);
+uint32_t dateToInt(tSensor *pDate);
 
 int openFile(FILE **_fp_in, const char *_input_fn);
-uint32_t readFile(FILE **_fp_in, Sensor *date);
+uint32_t readFile(FILE **_fp_in, tSensor *date);
+
+uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead);
+void addRecordNode (tSensor* date, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, uint8_t min, int16_t temperature);
+
+tNode* addListFront(tNode *pTop, tSensor data);
+tNode* addListBack(tNode *pBack, tSensor data);
+tNode* delList(tNode *pTop);
+void printList(tNode *pTop);
+
 #endif
