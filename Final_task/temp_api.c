@@ -108,7 +108,7 @@ int16_t max_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason)
     return max_temp;
 }
 
-// Высчитываем среднюю температуру в месяц, проходя по всему массиву структур.
+// Высчитываем среднюю температуру в год, проходя по всему массиву структур.
 float avr_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason)
 {
     uint32_t count = 0;
@@ -231,7 +231,7 @@ uint32_t readFile(FILE **_fp_in, tSensor *pDate)
 }
 
 
-//Функции для работы односвязного списка
+//Функции для обработки односвязного списка
 uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead)
 {
     tSensor date;

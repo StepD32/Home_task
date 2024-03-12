@@ -9,15 +9,15 @@ int main(int argc, char **argv)
 	FILE *fp;
 	char name_file[] = "temperature_big.csv";
 
-	//Открываем файл, если ошибка при открытии выходим из программы
+//Открываем файл, если при открытии ошибка выходим из программы
 	if (openFile(&fp, name_file))
 	{
 		printf("Exit program.\n");
 		return 0;
 	}
 
-	//Читаем файл и создаем односвязанный список для хранения неизвестного количества записей
-	// В список добавлем значения с конца. Первый вошел и первый вышел.
+//Читаем файл и создаем односвязный список для хранения неизвестного количества записей
+//В список добавлем значения в конца. Первый вошел и первый вышел.
 	uint32_t count_date = readFileNode(&fp, &pBack, &pHead);
 	
 	//Закрваем файл после считывания 
@@ -26,17 +26,18 @@ int main(int argc, char **argv)
 	printf("Processed values = %d\n", count_date);
 	printf("Year Month MonthMin MonthMax\n");
 
-	//Последовательно проходимся по списку, выводим данные по каждому месяцу.
-	//В функцию передаем начала списка и фильтр за какой месяй обробатывем данные.
+
+//Последовательно проходимся по списку, выводим данные по каждому месяцу.
+//В функцию передаем начала списка и фильтр за какой месяй обробатывем данные.
 	static_output_node(pHead, &month);
 
-	// Обрабатываем данный за весь за указанный год.
+//Обрабатываем данный за указанный год.
 	float avr_year = avr_temp_year_node(pHead, count_date, &month);
 	int16_t min_year = min_temp_year_node(pHead, count_date, &month);
 	int16_t max_year = max_temp_year_node(pHead, count_date, &month);
 	printf("Year statistic: average %0.5f, min %d,  max %d\n", avr_year, min_year, max_year);
 
-	// Освобождаем память в куче.
+//Освобождаем память в куче.
 	pHead = delList(pHead);
 
 	/*
