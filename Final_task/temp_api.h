@@ -78,19 +78,15 @@ int16_t min_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason);
 int16_t max_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason);
 
 void static_output(tSensor *pDate, uint32_t size, tSeason *pSeason);
-
 void swap(tSensor *pDate, uint32_t num_one, uint32_t num_two);
-
 void sortByDate(tSensor *pDate, uint16_t num_one, uint16_t size);
 uint32_t dateToInt(tSensor *pDate);
-
 int openFile(FILE **_fp_in, const char *_input_fn);
 uint32_t readFile(FILE **_fp_in, tSensor *date);
 
 
 //Функции для работы односвязного списка
 uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead);
-
 void addRecordNode (tSensor* date, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, uint8_t min, int16_t temperature);
 tNode* addListFront(tNode *pTop, tSensor data);
 tNode* addListBack(tNode *pBack, tSensor data);

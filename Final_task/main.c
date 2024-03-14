@@ -17,14 +17,14 @@ int main(int argc, char **argv)
 	}
 
 //Читаем файл и создаем односвязный список для хранения неизвестного количества записей
-//В список добавлем значения в конца. Первый вошел и первый вышел.
+//В список добавлем значения в конц. Первым пришёл — первым ушёл.
 	uint32_t count_date = readFileNode(&fp, &pBack, &pHead);
 	
 	//Закрваем файл после считывания 
 	fclose(fp);
 
 	printf("Processed values = %d\n", count_date);
-	printf("Year Month MonthMin MonthMax\n");
+	printf("Year Month MonthAvr MonthMin MonthMax\n");
 
 
 //Последовательно проходимся по списку, выводим данные по каждому месяцу.
