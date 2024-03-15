@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <unistd.h>
 
 #define SIZE 30
 #define TEMP_MAX 99
@@ -20,7 +20,8 @@
     - temperature - целое число от -99 до 99
 */
 
-typedef enum {
+typedef enum
+{
     Undefined = 0,
     January = 1,
     February,
@@ -37,40 +38,42 @@ typedef enum {
 
 } tMonth;
 
-typedef struct {
+typedef struct
+{
     uint16_t year;
-    uint8_t month       :4;
-    uint8_t day         :5;  
-    uint8_t hour        :5;
-    uint8_t min         :6;
+    uint8_t month : 4;
+    uint8_t day : 5;
+    uint8_t hour : 5;
+    uint8_t min : 6;
     int8_t temperature;
 } tSensor;
 
-typedef struct node{
+typedef struct node
+{
     tSensor data;
-    struct node* next; 
+    struct node *next;
 } tNode;
 
-typedef struct{
+typedef struct
+{
     uint16_t year;
     tMonth month;
 } tSeason;
 
 void addRecord(tSensor *pDate, uint32_t index,
-                uint16_t year, 
-                uint8_t mount, 
-                uint8_t day, 
-                uint8_t hour, 
-                uint8_t min, 
-                int16_t temperature            
-            );
+               uint16_t year,
+               uint8_t mount,
+               uint8_t day,
+               uint8_t hour,
+               uint8_t min,
+               int16_t temperature);
 
-int DelSensor(tSensor *pDate, uint16_t index,  int struc_size);
+int DelSensor(tSensor *pDate, uint16_t index, int struc_size);
 
 void print(tSensor *pDate, uint16_t num);
 
 float avr_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason);
-int16_t min_temp_month(tSensor *pDate, uint32_t size,tSeason *pSeason);
+int16_t min_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason);
 int16_t max_temp_month(tSensor *pDate, uint32_t size, tSeason *pSeason);
 
 float avr_temp_year(tSensor *pDate, uint32_t size, tSeason *pSeason);
@@ -84,20 +87,17 @@ uint32_t dateToInt(tSensor *pDate);
 int openFile(FILE **_fp_in, const char *_input_fn);
 uint32_t readFile(FILE **_fp_in, tSensor *date);
 
-
-//Функции для работы односвязного списка
+// Функции для работы односвязного списка
 uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead);
-void addRecordNode (tSensor* date, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, uint8_t min, int16_t temperature);
-tNode* addListFront(tNode *pTop, tSensor data);
-tNode* addListBack(tNode *pBack, tSensor data);
-tNode* delList(tNode *pTop);
-tNode* delNode(tNode *pTop);
+void addRecordNode(tSensor *date, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, uint8_t min, int16_t temperature);
+tNode *addListFront(tNode *pTop, tSensor data);
+tNode *addListBack(tNode *pBack, tSensor data);
+tNode *delList(tNode *pTop);
+tNode *delNode(tNode *pTop);
 void printList(tNode *pTop);
 
 int16_t min_temp_year_node(tNode *pHead, uint32_t size, tSeason *pSeason);
 int16_t max_temp_year_node(tNode *pHead, uint32_t size, tSeason *pSeason);
 float avr_temp_year_node(tNode *pHead, uint32_t size, tSeason *pSeason);
-
-
 
 #endif

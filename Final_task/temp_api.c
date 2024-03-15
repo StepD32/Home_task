@@ -219,7 +219,6 @@ uint32_t readFile(FILE **_fp_in, tSensor *pDate)
     }
 }
 
-
 //Функции для обработки односвязного списка
 void addRecordNode(tSensor *pDate, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour,
                    uint8_t min, int16_t temperature)
@@ -326,34 +325,40 @@ void static_output_node(tNode *pHead, tSeason *pSeason)
     tNode *pNode = pHead;
     while (1)
     {
-        if (month == pNode->data.month)
-        {
-            min_temp = pNode->data.temperature > min_temp ? min_temp : pNode->data.temperature;
-            max_temp = pNode->data.temperature < max_temp ? max_temp : pNode->data.temperature;
-            sum_count += pNode->data.temperature;
-            counn_avr++; 
-        }
-        else
-        {
-            avr_month = sum_count/counn_avr;
-            printf("%2d %3d %6.2f %8d %8d\n", year, month, avr_month, min_temp, max_temp);
-            min_temp = pNode->data.temperature;
-            max_temp = pNode->data.temperature;
-            month = pNode->data.month;
-            year = pNode->data.year;
-            sum_count = 0;
-            counn_avr  = 0;
-            avr_month = 0;
-        }
-
-        pNode = pNode->next;
-        
-        if (!pNode)
-        {
-            avr_month = sum_count/counn_avr;
-            printf("%2d %3d %6.2f %8d %8d\n", year, month, avr_month, min_temp, max_temp);
-            return;
-        }
+        //if (pSeason->month == Undefined)
+            
+            if (month == pNode->data.month)
+            {
+                min_temp = pNode->data.temperature > min_temp ? min_temp : pNode->data.temperature;
+                max_temp = pNode->data.temperature < max_temp ? max_temp : pNode->data.temperature;
+                sum_count += pNode->data.temperature;
+                counn_avr++; 
+            }
+            else
+            {
+                avr_month = sum_count/counn_avr;
+                if (pSeason->month == Undefined)
+                    printf("%d %6d %6.2f %8d %8d\n", year, month, avr_month, min_temp, max_temp);        
+                else 
+                    if (pSeason->month == month){
+                        printf("%d %6d %6.2f %8d %8d\n", year, pSeason->month, avr_month, min_temp, max_temp);
+                        return;
+                    }
+                min_temp = pNode->data.temperature;
+                max_temp = pNode->data.temperature;
+                month = pNode->data.month;
+                year = pNode->data.year;
+                sum_count = 0;
+                counn_avr  = 0;
+                avr_month = 0;
+            }
+            pNode = pNode->next;            
+            if (!pNode)
+            {
+                avr_month = sum_count/counn_avr;
+                printf("%d %6d %6.2f %8d %8d\n", year, month, avr_month, min_temp, max_temp);
+                return;
+            }
     }
 }
 
