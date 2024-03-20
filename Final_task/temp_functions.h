@@ -48,12 +48,6 @@ typedef struct
     int8_t temperature;
 } tSensor;
 
-typedef struct node
-{
-    tSensor data;
-    struct node *next;
-} tNode;
-
 typedef struct
 {
     uint16_t year;
@@ -88,3 +82,4 @@ int openFile(FILE **_fp_in, const char *_input_fn);
 uint32_t readFile(FILE **_fp_in, tSensor *date);
 
 #endif
+

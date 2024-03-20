@@ -10,6 +10,13 @@
 #include "temp_functions.h"
 
 
+typedef struct node
+{
+    tSensor data;
+    struct node *next;
+} tNode;
+
+
 // Функции для работы односвязного списка
 uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead);
 void addRecordNode(tSensor *date, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, uint8_t min, int16_t temperature);
