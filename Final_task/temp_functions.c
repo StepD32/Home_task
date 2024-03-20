@@ -12,7 +12,7 @@
 
 // Функция добавления новых данных о температуре в массив структур по индексу.
 
-#include "temp_api.h"
+#include "temp_functions.h"
 
 void addRecord(tSensor *pDate, uint32_t index, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour,
                uint8_t min, int16_t temperature)

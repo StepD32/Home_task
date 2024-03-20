@@ -1,4 +1,4 @@
-#include "temp_api.h"
+#include "temp_functions.h"
 
 int main(int argc, char **argv)
 {
@@ -15,10 +15,8 @@ int main(int argc, char **argv)
 	// программе перед вызовом функции вставить opterr=0
 	if (argc == 1)
 	{
-		puts("Temp statistic application. Please enter key:");
+		puts("Temp statistic application. Please \"-h\" enter key:");
 		puts("-h for help");
-		puts("-f file_name for load this file");
-		puts("-m xx statistic for xx month");
 		return 0;
 	}
 	while ((rez = getopt(argc, argv, "hf:m:")) != -1)
