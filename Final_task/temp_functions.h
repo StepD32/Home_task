@@ -87,17 +87,4 @@ uint32_t dateToInt(tSensor *pDate);
 int openFile(FILE **_fp_in, const char *_input_fn);
 uint32_t readFile(FILE **_fp_in, tSensor *date);
 
-// Функции для работы односвязного списка
-uint32_t readFileNode(FILE **_fp_in, tNode **pBack, tNode **pHead);
-void addRecordNode(tSensor *date, uint16_t year, uint8_t mount, uint8_t day, uint8_t hour, uint8_t min, int16_t temperature);
-tNode *addListFront(tNode *pTop, tSensor data);
-tNode *addListBack(tNode *pBack, tSensor data);
-tNode *delList(tNode *pTop);
-tNode *delNode(tNode *pTop);
-void printList(tNode *pTop);
-
-int16_t min_temp_year_node(tNode *pHead, uint32_t size, tSeason *pSeason);
-int16_t max_temp_year_node(tNode *pHead, uint32_t size, tSeason *pSeason);
-float avr_temp_year_node(tNode *pHead, uint32_t size, tSeason *pSeason);
-
 #endif
